@@ -1,7 +1,10 @@
 package com.bolsadeideas.springboot.web.app.controllers;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import com.bolsadeideas.springboot.web.app.models.Usuario;
 
 
 @Controller
@@ -23,10 +26,25 @@ public class InicioController {
 		
 		//5. tenemos que crear esta vista 
 		
-		//prueba con .git 
-		
 		return "index";
 		
+		
+	}
+	
+	//antes de hacer una sonsulta uso el mapping en este caso el get mapping 
+	
+	@GetMapping("/perfil")
+	public String perfil (Model model) {
+		//crteo mi objeto usuario y aqui mismo le doy el resultado 
+		
+		
+		Usuario usuario = new Usuario();
+		usuario.setNombre("Gildardo");
+	    usuario.setApellido("Ortega");
+		
+		//se agrega el atributo al modelo de mi objeto, un objeto puede tener varias caracteristicas como nombre o apellido 
+		model.addAttribute("usuario", usuario);
+		return "perfil";
 		
 	}
 	
